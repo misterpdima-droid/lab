@@ -5,154 +5,274 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Законы Ньютона — Индивидуальный проект</title>
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #0f172a, #1e3a8a, #0f172a);
-      color: white;
+    body{
+      margin:0;
+      font-family:Arial, sans-serif;
+      background:linear-gradient(135deg,#0f172a,#1e3a8a,#0f172a);
+      color:white;
     }
 
-    header {
-      text-align: center;
-      padding: 30px;
-      font-size: 28px;
-      font-weight: bold;
+    header{
+      text-align:center;
+      padding:22px;
+      font-size:28px;
+      font-weight:bold;
     }
 
-    .tabs {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      margin-bottom: 20px;
+    .tabs{
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-bottom:20px;
     }
 
-    button {
-      padding: 10px 15px;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      background: #334155;
-      color: white;
-      transition: 0.3s;
+    button{
+      padding:10px 14px;
+      border:none;
+      border-radius:10px;
+      cursor:pointer;
+      background:#334155;
+      color:white;
+      transition:0.3s;
     }
 
-    button.active {
-      background: #3b82f6;
+    button.active{background:#3b82f6;}
+
+    .container{
+      max-width:1000px;
+      margin:auto;
+      padding:20px;
     }
 
-    .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 20px;
+    .page{display:none;animation:fade .35s ease;}
+    .page.active{display:block;}
+
+    @keyframes fade{
+      from{opacity:0;transform:translateY(10px)}
+      to{opacity:1;transform:translateY(0)}
     }
 
-    .card {
-      background: rgba(30, 41, 59, 0.9);
-      padding: 20px;
-      border-radius: 15px;
-      margin-bottom: 15px;
+    .card{
+      background:rgba(30,41,59,0.92);
+      padding:18px;
+      border-radius:15px;
+      margin-bottom:12px;
     }
 
-    h2 {
-      margin-top: 0;
+    h2{margin-top:0;}
+
+    .formula{
+      font-family:monospace;
+      background:#0f172a;
+      padding:6px 10px;
+      border-radius:8px;
+      display:inline-block;
+      margin:6px 0;
     }
 
-    .hidden {
-      display: none;
+    .lab{
+      display:flex;
+      gap:20px;
+      flex-wrap:wrap;
     }
 
-    input[type=range] {
-      width: 100%;
+    .panel{flex:1;min-width:280px;}
+
+    .weight{
+      background:#3b82f6;
+      padding:8px;
+      margin:6px 0;
+      border-radius:8px;
+      text-align:center;
     }
 
-    .result {
-      font-size: 22px;
-      margin-top: 10px;
-      font-weight: bold;
+    .rope{
+      border-left:2px solid white;
+      padding-left:18px;
+      min-height:280px;
     }
+
+    .hint{opacity:0.8;font-size:14px;}
+
+    .small{font-size:14px;opacity:0.9;}
   </style>
 </head>
 <body>
 
-<header>
-  Индивидуальный проект: Законы Ньютона
-</header>
+<header>Законы Ньютона — Индивидуальный проект</header>
 
 <div class="tabs">
-  <button class="active" onclick="showTab('laws', this)">Законы Ньютона</button>
-  <button onclick="showTab('lab', this)">Лабораторная работа</button>
+  <button class="active" onclick="show('laws',this)">Законы</button>
+  <button onclick="show('proofs',this)">Доказательства</button>
+  <button onclick="show('formulas',this)">Формулы</button>
+  <button onclick="show('lab',this)">Лаборатория</button>
 </div>
 
 <div class="container">
 
-  <div id="laws">
+<!-- ЗАКОНЫ -->
+<div id="laws" class="page active">
 
-    <div class="card">
-      <h2>Первый закон Ньютона</h2>
-      <p>Тело сохраняет состояние покоя или равномерного прямолинейного движения, пока на него не действуют внешние силы.</p>
-      <p><b>Объяснение:</b> если нет внешнего воздействия, скорость тела не изменяется.</p>
-    </div>
-
-    <div class="card">
-      <h2>Второй закон Ньютона</h2>
-      <p>Ускорение тела прямо пропорционально силе и обратно пропорционально массе.</p>
-      <p><b>Формула:</b> F = m × a</p>
-      <p><b>Объяснение:</b> чем больше сила — тем больше ускорение.</p>
-    </div>
-
-    <div class="card">
-      <h2>Третий закон Ньютона</h2>
-      <p>Сила действия равна силе противодействия, но направлена в противоположную сторону.</p>
-      <p><b>Объяснение:</b> если одно тело действует на другое, второе действует обратно с такой же силой.</p>
-    </div>
-
+  <div class="card">
+    <h2>Первый закон Ньютона (закон инерции)</h2>
+    <p>Первый закон Ньютона утверждает, что тело сохраняет состояние покоя или равномерного прямолинейного движения до тех пор, пока на него не действуют внешние силы. Это означает, что любое изменение скорости невозможно без причины.</p>
+    <p>Данный закон описывает фундаментальное свойство материи — инерцию, то есть сопротивление изменению скорости движения.</p>
   </div>
 
-  <div id="lab" class="hidden">
+  <div class="card">
+    <h2>Второй закон Ньютона</h2>
+    <p>Ускорение тела прямо пропорционально равнодействующей силе и обратно пропорционально массе тела. Это основной закон динамики, позволяющий рассчитывать движение тел.</p>
+    <p>Он показывает, как сила влияет на изменение скорости и направления движения.</p>
+  </div>
 
-    <div class="card">
-      <h2>Лабораторная работа: Второй закон Ньютона</h2>
+  <div class="card">
+    <h2>Третий закон Ньютона</h2>
+    <p>Силы взаимодействия двух тел всегда равны по модулю и противоположны по направлению. Эти силы действуют на разные тела и не компенсируют друг друга.</p>
+    <p>Закон объясняет взаимодействие всех объектов во Вселенной — от удара шаров до движения ракет.</p>
+  </div>
 
-      <label>Сила (F), Н</label>
-      <input type="range" id="force" min="0" max="500" value="100" oninput="calc()">
-      <div id="forceVal">100</div>
+</div>
 
-      <label>Масса (m), кг</label>
-      <input type="range" id="mass" min="1" max="200" value="50" oninput="calc()">
-      <div id="massVal">50</div>
+<!-- ДОКАЗАТЕЛЬСТВА (УДЛИНЕННЫЕ) -->
+<div id="proofs" class="page">
 
-      <div class="result" id="result">a = 2.00 м/с²</div>
+  <div class="card">
+    <h2>Доказательство первого закона Ньютона</h2>
+    <p>Если тело находится в космическом пространстве, где отсутствует сопротивление воздуха и трение, оно продолжает движение с постоянной скоростью без изменения направления.</p>
+    <p>Это наблюдается в движении спутников и космических аппаратов, которые могут двигаться годами без двигателя.</p>
+    <p>Также на Земле приближение к этому состоянию можно наблюдать на воздушной подушке или ледяной поверхности.</p>
+  </div>
 
-      <p>Вывод: ускорение увеличивается при увеличении силы и уменьшается при увеличении массы.</p>
+  <div class="card">
+    <h2>Доказательство второго закона Ньютона</h2>
+    <p>Эксперименты с тележками показывают, что при одинаковой силе более лёгкая тележка ускоряется быстрее, чем тяжёлая.</p>
+    <p>Если увеличить силу, ускорение увеличивается пропорционально. Если увеличить массу — ускорение уменьшается.</p>
+    <p>Это подтверждается множеством лабораторных опытов и измерениями в физике движения.</p>
+  </div>
+
+  <div class="card">
+    <h2>Доказательство третьего закона Ньютона</h2>
+    <p>При выстреле из оружия происходит отдача — пуля летит вперёд, а оружие отталкивается назад.</p>
+    <p>Реактивные двигатели работают по тому же принципу: выброс газа назад создаёт движение ракеты вперёд.</p>
+    <p>Также при столкновении двух тел силы взаимодействия всегда одинаковы по модулю, что можно измерить датчиками силы.</p>
+  </div>
+
+</div>
+
+<!-- ФОРМУЛЫ -->
+<div id="formulas" class="page">
+
+  <div class="card">
+    <h2>Основные формулы и пояснения</h2>
+
+    <div class="formula">F = m × a</div>
+    <p>Основной закон динамики: сила вызывает ускорение тела.</p>
+
+    <div class="formula">F = m × g</div>
+    <p>Сила тяжести — сила, с которой Земля притягивает тело.</p>
+
+    <div class="formula">p = m × v</div>
+    <p>Импульс — характеристика движения тела.</p>
+
+    <div class="formula">F = Δp / Δt</div>
+    <p>Сила равна изменению импульса за время.</p>
+
+    <div class="formula">Fтр = μN</div>
+    <p>Сила трения зависит от поверхности и давления.</p>
+
+    <div class="formula">a = F / m</div>
+    <p>Ускорение определяется силой и массой тела.</p>
+
+    <div class="formula">N = mg</div>
+    <p>Нормальная реакция опоры равна силе тяжести (в покое).</p>
+  </div>
+
+</div>
+
+<!-- ЛАБОРАТОРНАЯ (ИСПРАВЛЕННАЯ) -->
+<div id="lab" class="page">
+
+  <div class="card">
+    <h2>Интерактивная лаборатория: подвешенные грузы</h2>
+    <p class="hint">Добавляй грузы и наблюдай, как изменяется сила системы.</p>
+
+    <button onclick="add(1)">+1 кг</button>
+    <button onclick="add(2)">+2 кг</button>
+    <button onclick="add(5)">+5 кг</button>
+    <button onclick="clearAll()">Очистить</button>
+
+    <div class="lab">
+      <div class="panel">
+        <h3>Грузы</h3>
+        <div id="list"></div>
+      </div>
+
+      <div class="panel rope">
+        <h3>Нить</h3>
+        <div id="rope"></div>
+      </div>
     </div>
+
+    <div class="card small" id="info"></div>
 
   </div>
 
 </div>
 
+</div>
+
 <script>
-function showTab(tab, btn) {
-  document.getElementById('laws').classList.add('hidden');
-  document.getElementById('lab').classList.add('hidden');
+let weights=[];
+const g=9.8;
 
-  document.getElementById(tab).classList.remove('hidden');
+function show(id,btn){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
 
-  document.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('button').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
 }
 
-function calc() {
-  let F = document.getElementById('force').value;
-  let m = document.getElementById('mass').value;
+function add(w){weights.push(w);render();}
+function clearAll(){weights=[];render();}
 
-  document.getElementById('forceVal').innerText = F;
-  document.getElementById('massVal').innerText = m;
+function render(){
+  let list=document.getElementById('list');
+  let rope=document.getElementById('rope');
 
-  let a = (F / m).toFixed(2);
-  document.getElementById('result').innerText = "a = " + a + " м/с²";
+  list.innerHTML='';
+  rope.innerHTML='';
+
+  let m=0;
+
+  if(weights.length===0){
+    list.innerHTML='<p>Нет грузов</p>';
+  }
+
+  weights.forEach((w,i)=>{
+    m+=w;
+
+    let d=document.createElement('div');
+    d.className='weight';
+    d.innerText=`Груз ${i+1}: ${w} кг`;
+    list.appendChild(d);
+
+    let r=document.createElement('div');
+    r.className='weight';
+    r.innerText=w+' kg';
+    rope.appendChild(r);
+  });
+
+  let F=m*g;
+
+  document.getElementById('info').innerHTML=
+    `<b>Общая масса:</b> ${m} кг<br>
+     <b>Сила тяжести:</b> ${F.toFixed(2)} Н<br>
+     <b>Формула:</b> F = m × g`;
 }
 
-calc();
+render();
 </script>
 
 </body>
