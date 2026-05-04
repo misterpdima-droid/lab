@@ -1,235 +1,158 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<title>Newton Lab — Physics Project</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Законы Ньютона — Индивидуальный проект</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #0f172a, #1e3a8a, #0f172a);
+      color: white;
+    }
 
-<style>
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #050816;
-    color: white;
-    scroll-behavior: smooth;
-}
+    header {
+      text-align: center;
+      padding: 30px;
+      font-size: 28px;
+      font-weight: bold;
+    }
 
-/* NAV */
-nav {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    padding: 12px;
-    background: rgba(10,15,30,0.7);
-    backdrop-filter: blur(10px);
-}
+    .tabs {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
 
-nav a {
-    color: white;
-    text-decoration: none;
-    opacity: 0.8;
-}
+    button {
+      padding: 10px 15px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      background: #334155;
+      color: white;
+      transition: 0.3s;
+    }
 
-nav a:hover {
-    color: #38bdf8;
-    opacity: 1;
-}
+    button.active {
+      background: #3b82f6;
+    }
 
-/* HERO */
-.hero {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+    }
 
-.hero h1 {
-    font-size: 60px;
-    background: linear-gradient(90deg,#38bdf8,#a78bfa);
-    -webkit-background-clip: text;
-    color: transparent;
-}
+    .card {
+      background: rgba(30, 41, 59, 0.9);
+      padding: 20px;
+      border-radius: 15px;
+      margin-bottom: 15px;
+    }
 
-.hero p {
-    opacity: 0.7;
-}
+    h2 {
+      margin-top: 0;
+    }
 
-/* SECTIONS */
-section {
-    max-width: 900px;
-    margin: auto;
-    padding: 80px 20px;
-}
+    .hidden {
+      display: none;
+    }
 
-.card {
-    background: rgba(255,255,255,0.05);
-    padding: 20px;
-    margin: 15px 0;
-    border-radius: 15px;
-    border: 1px solid rgba(255,255,255,0.1);
-}
+    input[type=range] {
+      width: 100%;
+    }
 
-input {
-    padding: 8px;
-    margin: 5px;
-    border-radius: 8px;
-    border: none;
-}
-
-button {
-    padding: 10px 15px;
-    border-radius: 10px;
-    border: none;
-    background: #38bdf8;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-/* CANVAS */
-canvas {
-    background: #0a0f1f;
-    border-radius: 12px;
-    border: 1px solid rgba(255,255,255,0.1);
-}
-
-/* FOOTER */
-footer {
-    text-align: center;
-    padding: 40px;
-    opacity: 0.5;
-}
-</style>
+    .result {
+      font-size: 22px;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+  </style>
 </head>
-
 <body>
 
-<nav>
-<a href="#home">Home</a>
-<a href="#laws">Laws</a>
-<a href="#lab">Lab</a>
-<a href="#sim">Simulation</a>
-</nav>
+<header>
+  Индивидуальный проект: Законы Ньютона
+</header>
 
-<div class="hero" id="home">
-<h1>Newton Lab</h1>
-<p>Interactive Physics Simulation Project</p>
+<div class="tabs">
+  <button class="active" onclick="showTab('laws', this)">Законы Ньютона</button>
+  <button onclick="showTab('lab', this)">Лабораторная работа</button>
 </div>
 
-<section id="laws">
-<h2>📘 Законы Ньютона</h2>
+<div class="container">
 
-<div class="card">
-<h3>1 закон</h3>
-<p>Тело сохраняет состояние покоя или движения без внешней силы.</p>
+  <div id="laws">
+
+    <div class="card">
+      <h2>Первый закон Ньютона</h2>
+      <p>Тело сохраняет состояние покоя или равномерного прямолинейного движения, пока на него не действуют внешние силы.</p>
+      <p><b>Объяснение:</b> если нет внешнего воздействия, скорость тела не изменяется.</p>
+    </div>
+
+    <div class="card">
+      <h2>Второй закон Ньютона</h2>
+      <p>Ускорение тела прямо пропорционально силе и обратно пропорционально массе.</p>
+      <p><b>Формула:</b> F = m × a</p>
+      <p><b>Объяснение:</b> чем больше сила — тем больше ускорение.</p>
+    </div>
+
+    <div class="card">
+      <h2>Третий закон Ньютона</h2>
+      <p>Сила действия равна силе противодействия, но направлена в противоположную сторону.</p>
+      <p><b>Объяснение:</b> если одно тело действует на другое, второе действует обратно с такой же силой.</p>
+    </div>
+
+  </div>
+
+  <div id="lab" class="hidden">
+
+    <div class="card">
+      <h2>Лабораторная работа: Второй закон Ньютона</h2>
+
+      <label>Сила (F), Н</label>
+      <input type="range" id="force" min="0" max="500" value="100" oninput="calc()">
+      <div id="forceVal">100</div>
+
+      <label>Масса (m), кг</label>
+      <input type="range" id="mass" min="1" max="200" value="50" oninput="calc()">
+      <div id="massVal">50</div>
+
+      <div class="result" id="result">a = 2.00 м/с²</div>
+
+      <p>Вывод: ускорение увеличивается при увеличении силы и уменьшается при увеличении массы.</p>
+    </div>
+
+  </div>
+
 </div>
-
-<div class="card">
-<h3>2 закон</h3>
-<p><b>F = m × a</b> — основной закон динамики</p>
-</div>
-
-<div class="card">
-<h3>3 закон</h3>
-<p>Сила действия равна силе противодействия</p>
-</div>
-</section>
-
-<section id="lab">
-<h2>🧪 Лаборатория</h2>
-
-<div class="card">
-Сила:
-<input id="F" value="30">
-
-Масса:
-<input id="M" value="5">
-
-<button onclick="calc()">Рассчитать</button>
-
-<p id="result"></p>
-</div>
-</section>
-
-<section id="sim">
-<h2>🎮 Симуляция</h2>
-
-<div class="card">
-<button onclick="start()">Старт</button>
-<button onclick="reset()">Сброс</button>
-
-<canvas id="c" width="900" height="220"></canvas>
-</div>
-</section>
-
-<footer>
-Newton Lab © 2026
-</footer>
 
 <script>
+function showTab(tab, btn) {
+  document.getElementById('laws').classList.add('hidden');
+  document.getElementById('lab').classList.add('hidden');
 
-function calc(){
-    let F = Number(document.getElementById("F").value);
-    let M = Number(document.getElementById("M").value);
+  document.getElementById(tab).classList.remove('hidden');
 
-    if(M <= 0){
-        document.getElementById("result").innerText = "Масса должна быть > 0";
-        return;
-    }
-
-    let a = F / M;
-    document.getElementById("result").innerText =
-        "Ускорение: " + a.toFixed(2) + " м/с²";
+  document.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
 }
 
-/* SIM */
-let x = 50;
-let v = 0;
-let anim;
+function calc() {
+  let F = document.getElementById('force').value;
+  let m = document.getElementById('mass').value;
 
-function start(){
-    cancelAnimationFrame(anim);
+  document.getElementById('forceVal').innerText = F;
+  document.getElementById('massVal').innerText = m;
 
-    let F = 30;
-    let M = 5;
-    let a = F / M;
-
-    let c = document.getElementById("c");
-    let ctx = c.getContext("2d");
-
-    function loop(){
-        ctx.clearRect(0,0,c.width,c.height);
-
-        v += a * 0.07;
-        x += v;
-
-        if(x > 860){
-            x = 50;
-            v = 0;
-        }
-
-        ctx.fillStyle = "#38bdf8";
-        ctx.fillRect(x,120,30,30);
-
-        anim = requestAnimationFrame(loop);
-    }
-
-    loop();
+  let a = (F / m).toFixed(2);
+  document.getElementById('result').innerText = "a = " + a + " м/с²";
 }
 
-function reset(){
-    cancelAnimationFrame(anim);
-    x = 50;
-    v = 0;
-
-    let c = document.getElementById("c");
-    let ctx = c.getContext("2d");
-    ctx.clearRect(0,0,c.width,c.height);
-}
-
+calc();
 </script>
 
 </body>
